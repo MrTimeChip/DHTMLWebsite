@@ -1,0 +1,41 @@
+extends layout
+
+block content
+
+    h1 Ресторан: #{restaurant.restaurant_name}
+
+    div(style='margin-left:20px;margin-top:20px')
+        .restaurant-detail-wrapper
+            img(src=restaurant.img_link class='restaurant-detail-img')
+            .restaurant-detail-info
+                .restaurant-detail-address
+                    h4 #{`г. ${restaurant.address.city}, ${restaurant.address.street} ${restaurant.address.building_number} `}
+                - restaurant_tables.sort(function (a,b) { return a.table_number - b.table_number})
+                .tables-wrapper
+                    each table in restaurant_tables
+                        .table-wrapper
+                            if table.status === 'Reserved'
+                                .table-reserved
+                                    .table-content
+                                        .table-status.table-info-item
+                                            p Забронировано
+                                        .table-number.table-info-item
+                                            p #{`№${table.table_number}`}
+                                        .table-info-item
+                                            p #{`${table.reserved_from}-${table.available_after}`}
+                                        .table-info-item
+                                            p #{`На имя: ${table.reserved_for}`}
+                            else
+                                .table-available
+                                    .table-content
+                                        .table-status.table-info-item
+                                            p Свободно
+                                        .table-number.table-info-item
+                                            p #{`№${table.table_number}`}
+                                        .table-capacity.table-info-item
+                                            p Вместимость: #{table.capacity}
+                                        if table.near_window
+                                            .table-near-window.table-info-item
+                                                p У окна
+                                        .table-reserve.table-info-item
+                                            a(href=table.url + '/update') Хочу!

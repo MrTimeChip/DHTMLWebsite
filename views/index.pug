@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .main-logo
+    h1 Поедовъ
+  p Добро пожаловать в рестораны #[em Поедовъ]!
+  p Мы предлагем лучшие болюда и высочайшее качество обслуживания с 1995 года!
+  p В наши рестораны очень сложно попасть, в связи с чем - бронь держится целые сутки!
+  if error
+    p Ошибка при загрузке контента.
+  else
+    h2 Мы предлагаем #[strong !{data.table_count}] столик в #[strong !{data.restaurant_count}] ресторанах!
+    .restaurants-link
+      a(href='/catalog/restaurants') Наши рестораны

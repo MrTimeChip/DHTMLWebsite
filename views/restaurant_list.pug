@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    h1= title
+
+    .restaurants-wrapper
+        - restaurant_list.sort(function(a, b) {let textA = a.restaurant_name.toUpperCase(); let textB = b.restaurant_name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+        each restaurant in restaurant_list
+            .restaurant-wrapper
+                img(src=restaurant.img_link class='restaurant-img')
+                .restaurant-info-darkener
+                    .restaurant-info
+                        .restaurant-name
+                            a(href=restaurant.url) #{restaurant.restaurant_name}
+                        br
+                        | #{restaurant.address.city}
+                        br
+                        .restaurant-time
+                            p  #{restaurant.open_time}-#{restaurant.close_time}
+                        .restaurant-count
+                            img(src='/images/human_white.png' class='human-icon')
+                            p  #{restaurant.current_amount}/#{restaurant.capacity}
+
+        else
+            p Нет ресторанов (Куда делись?).

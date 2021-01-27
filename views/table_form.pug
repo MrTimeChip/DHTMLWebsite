@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    h1= title + ' номер ' + table.table_number
+
+    if table.status === 'Reserved'
+        h2 Столик уже забронирован
+        a(href='/catalog/restaurants') К ресторанам
+    else
+        if table.near_window
+            p Ресторан: #{table.restaurant.restaurant_name}, столик на #{table.capacity} человек(-а) у окна
+        else
+            p Ресторан: #{table.restaurant.restaurant_name}, столик на #{table.capacity} человек(-а)
+        form(method='POST' action='')
+            div.form-group
+                label(for='reserved_for') На имя:
+                input#reserved_for.form-control(type='text', placeholder='Ваше имя' name='reserved_for' required='true' value=(undefined===table ? '' : table.reserved_for))
+            div.form-group
+                label(for='reserved_from') С:
+                input#reserved_from.form-control(type='time', placeholder='Время в формате ЧЧ:ММ' name='reserved_from' required='true')
+            div.form-group
+                label(for='available_after') До:
+                input#available_after.form-control(type='time', placeholder='Время в формате ЧЧ:ММ' name='available_after' required='true')
+            button.btn.btn-primary(type='submit') Забронировать
+            a(href='/catalog/restaurants')  К ресторанам
+
+    if errors
+        ul
+            for error in errors
+                li!= error.msg

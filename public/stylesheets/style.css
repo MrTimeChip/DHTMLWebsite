@@ -1,0 +1,184 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  display: flex;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.content {
+  margin: auto;
+}
+
+.main-logo {
+  text-align: center;
+}
+
+.restaurants-link {
+  text-align: center;
+
+  font-size: 4em;
+}
+
+.tables-wrapper {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+
+  width: 700px;
+  height: 100%;
+}
+
+.table-wrapper {
+  width: 170px;
+  height: 130px;
+
+  margin: 10px;
+
+  background-color: white;
+
+  box-shadow: 0 0 14px 5px rgba(0,0,0,0.52);
+}
+
+.table-reserved {
+  width: 100%;
+  height: 100%;
+  border: 5px solid red;
+}
+
+.table-available {
+  width: 100%;
+  height: 100%;
+  border: 5px solid cornflowerblue;
+}
+
+.table-content {
+  display: flex;
+
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 5px;
+
+  text-align: center;
+}
+
+.table-status {
+  font-weight: bold;
+}
+
+.table-near-window {
+  font-style: italic;
+}
+
+.table-info-item {
+  height: 23px;
+}
+
+.restaurants-wrapper {
+  display: flex;
+
+  justify-content: space-between;
+
+  width: 1000px;
+}
+
+.restaurant-wrapper {
+  position: relative;
+
+  width: 320px;
+  height: 400px;
+
+  text-align: center;
+
+  color: white;
+}
+
+.restaurant-info-darkener {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+
+  top: 0;
+
+  z-index: 2;
+
+  transition: background-color 1s ease-out;
+}
+
+.restaurant-info-darkener:hover {
+  background-color: rgba(0, 0, 0, 0.51);
+
+  box-shadow: 0 0 14px 5px rgba(0,0,0,0.52);
+}
+
+.restaurant-info-darkener:hover .restaurant-info {
+  opacity: 1;
+}
+
+.restaurant-img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.restaurant-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+
+  transition: opacity 1s ease-out;
+}
+
+.restaurant-name {
+  font-size: 3em;
+}
+
+.restaurant-time {
+  font-size: 1.2em;
+}
+
+.human-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.restaurant-detail-wrapper {
+  position: relative;
+}
+
+.restaurant-detail-img {
+  width: 700px;
+  height: 500px;
+
+  object-fit: cover;
+
+  filter: brightness(50%) blur(4px);
+}
+
+.restaurant-detail-info {
+  position: absolute;
+
+  top: 0;
+}
+
+.restaurant-detail-address {
+  color: white;
+}
+
+#available_after,
+#reserved_from {
+  width: 100px;
+}
